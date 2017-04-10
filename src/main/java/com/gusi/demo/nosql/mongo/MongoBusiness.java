@@ -19,6 +19,10 @@ public class MongoBusiness {
 	@Autowired
 	private MongoTemplate mongoTemplate;// 直接在业务类中注入template对象
 
+	/**
+	 * mongo处理对象
+	 *
+	 */
 	public static class Demo {
 		private String a;
 		private int b;
