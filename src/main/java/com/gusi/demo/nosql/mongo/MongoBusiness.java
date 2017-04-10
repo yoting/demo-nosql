@@ -2,8 +2,10 @@ package com.gusi.demo.nosql.mongo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.DbCallback;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
@@ -23,7 +25,9 @@ public class MongoBusiness {
 	 * mongo处理对象
 	 *
 	 */
+	@Document(collection = "demoColl")
 	public static class Demo {
+		@Id
 		private String a;
 		private int b;
 
