@@ -56,6 +56,8 @@
 	</bean>
 	<!-- redis end -->
 
+	<!-- 注意xml需要mongo的schemal -->
+	<!-- mongo 设置数据库的各种属性，比如连接地址和端口等等 -->
 	<mongo:mongo host="${mongo.host}" port="${mongo.port}">
 		<mongo:options connections-per-host="${mongo.connectionsPerHost}"
 			threads-allowed-to-block-for-connection-multiplier="${mongo.threadsAllowedToBlockForConnectionMultiplier}"
@@ -65,10 +67,12 @@
 			write-number="1" write-timeout="0" write-fsync="true" />
 	</mongo:mongo>
 
-	<mongo:db-factory dbname="database" mongo-ref="mongo" />
+	<mongo:db-factory dbname="demoDB" mongo-ref="mongo" />
+	<!-- dbname表示数据库的名称默认为db,此处会默认创建一个mongoDBFactory的bean -->
 
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
+		<!-- template只需要将上面的mongoDBFactory注入即可，当然我们还可以用很多种其他的MongoTemplate构造器来定义这个template -->
 	</bean>
 
 </beans>

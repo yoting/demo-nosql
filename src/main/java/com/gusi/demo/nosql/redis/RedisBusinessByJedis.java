@@ -20,6 +20,7 @@ public class RedisBusinessByJedis implements RedisBusiness {
 		String value = jedisPool.getResource().get("demoString");
 		System.out.println(value);// 21
 		jedisPool.getResource().expire("demoString", 60);// 设置过期时间在60秒以后
+		jedisPool.getResource().close();
 	}
 
 	public void demoList() {
